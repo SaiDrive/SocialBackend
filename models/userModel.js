@@ -8,12 +8,11 @@ userName : {
     unique: true,
     match: [/^[a-zA-Z0-9]+$/, 'Invalid username']
 },
-phoneNumber: {
+email: {
     type: String, 
     required: true, 
     unique: true,
-    match: [/^\d{10}$/, 'Invalid phone number']
-
+    match: [/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/, 'Invalid email address']
 },
 password: { 
     type: String, 
