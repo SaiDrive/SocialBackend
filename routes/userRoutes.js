@@ -4,6 +4,6 @@ const {userRegistration, userLogin} = require('../controllers/signinLoginCtrls')
 
 router.post('/signin', userRegistration);
 
-router.get('/login', userLogin);
+router.post('/login', userLogin);
 
 module.exports = router;
