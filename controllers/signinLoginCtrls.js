@@ -28,10 +28,11 @@ const comparePassword = async (password, hashPassword) => {
 const userRegistration = async (req, res) => {
 
     try{
-        const {userName, email, phoneNumber, dob, password} = req.body;
+        const {firstName, lastName, email, phoneNumber, dob, password} = req.body;
         const hashedpassword = await hashPassword(password);
         const user = new User ({
-            userName,
+            firstName,
+            lastName,
             email,
             phoneNumber,
             dob,
@@ -49,8 +50,8 @@ const userRegistration = async (req, res) => {
 
 const userLogin = async (req, res) => {
     try {
-        const {userName, password} = req.body;
-        const user = await User.findOne({userName});
+        const {phoneNumber, password} = req.body;
+        const user = await User.findOne({phoneNumber});
         if (user){
             const authenticate = await comparePassword(password, user.password);
             if (authenticate) {
