@@ -28,11 +28,13 @@ const comparePassword = async (password, hashPassword) => {
 const userRegistration = async (req, res) => {
 
     try{
-        const {userName, email, password} = req.body;
+        const {userName, email, phoneNumber, dob, password} = req.body;
         const hashedpassword = await hashPassword(password);
         const user = new User ({
             userName,
             email,
+            phoneNumber,
+            dob,
             password : hashedpassword
         })
 
@@ -41,7 +43,7 @@ const userRegistration = async (req, res) => {
     }
     catch(error) {
         console.log(error);
-        res.send("Registration failed");
+        res.send(`"Registration failed" ${error} `);
     }
 };
 
